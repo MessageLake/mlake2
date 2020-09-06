@@ -2,10 +2,10 @@ var path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './client/app.js',
+  entry: './client/App.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'app.bundle.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [

@@ -23,3 +23,7 @@ you could have the "same" feed with separate tags if the time range is different
 Time range kind of defeats the purpose. Or does it?
 No it doesn't. Let the tool be flexible. It's search and constant.
 It's almost like elasticsearch for notes? "Human-generated logs"?
+
+display sections of feed
+display messages
+
