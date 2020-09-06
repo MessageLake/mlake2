@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       feeds: []
     };
-    this.getFeedsForUser.bind(this);
+    this.getFeedsForUser = this.getFeedsForUser.bind(this);
   }
   
   componentDidMount() {

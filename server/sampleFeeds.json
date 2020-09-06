@@ -25,7 +25,7 @@
     ]
   },
   {
-    "id": 1,
+    "id": 2,
     "tags": [
       "client",
       "singer",
@@ -33,17 +33,17 @@
     ],
     "messages": [
       {
-        "id": 3,
+        "id": 4,
         "tags": [ "client", "money" ],
         "text": "Never give freebies again, l337 are two months late with the check."
       },
       {
-        "id": 7,
+        "id": 6,
         "tags": [ "band", "heavy" ],
         "text": "Good session with Dead Doors Down depends on drummer sobriety"
       },
       {
-        "id": 15,
+        "id": 12,
         "tags": [ "singer", "pop", "gospel" ],
         "text": "Johanna has a great voice but the first two takes are always the best, make sure not to squander these."
       }
