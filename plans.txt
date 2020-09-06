@@ -1,0 +1,25 @@
+cli? html? <- html
+vanilla? react? <- react
+  lots of reusable components
+db? <- postgres
+  just easy
+
+
+
+in it's first iteration, without a concept of multiple users, this is a way
+for an individual to store notes and retrieve them later according to content
+and have multiple sets of histories according to content
+
+fictional recording studio
+
+create sample data that displays feeds as they would be populated
+a sample response for all feeds for a user (identified only by tags for now)
+  a sample response for 1 feed ()
+
+design query api to add tagged messages
+
+
+you could have the "same" feed with separate tags if the time range is different? Well...
+Time range kind of defeats the purpose. Or does it?
+No it doesn't. Let the tool be flexible. It's search and constant.
+It's almost like elasticsearch for notes? "Human-generated logs"?
