@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "tags": [
+      "equipment",
+      "hardware",
+      "microphone"
+    ]
+  },
+  {
+    "id": 2,
+    "tags": [
+      "client",
+      "singer",
+      "band"
+    ]
+  }
+]

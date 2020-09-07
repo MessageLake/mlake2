@@ -4,16 +4,18 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const { createMessage } = require('./crud.js');
+const { createMessage, allFeeds } = require('./crud.js');
 
 app.use(express.static('public'));
 app.use(express.json({ urlencoded: true }));
 
 app.get('/feeds', (_req, res) => {
   try {
-    res.send(fs.readFileSync(path.resolve(__dirname, 'sampleFeeds.json')));
+    const feeds = allFeeds();
+    res.send(feeds);
   } catch (err) {
     console.error(`Error returning feeds: ${err.message}`)
+    res.sendStatus(500);
   }
 });
 
