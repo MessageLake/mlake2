@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Messager from './Messager';
+import Feeder from './Feeder';
 import Feeds from './Feeds';
 
 class App extends React.Component {
@@ -31,6 +32,7 @@ class App extends React.Component {
       <div>
         {/* for adding messages to the database */}
         <Messager getFeeds={this.getFeedsForUser} />
+        <Feeder getFeeds={this.getFeedsForUser} />
         {/* for viewing messages from the database in feeds */}
         <Feeds feeds={feeds} />
       </div>

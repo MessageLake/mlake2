@@ -27,3 +27,10 @@ It's almost like elasticsearch for notes? "Human-generated logs"?
 display sections of feed
 display messages
 
+Feeds based on tags
+Feeds should also be based on fulltext search?
+
+(How is it special?)
+Create feeds
+
+

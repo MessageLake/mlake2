@@ -77,7 +77,30 @@ const relevantMessages = (tags) => {
   });
 }
 
+// Keep save methods separate because even though they are identical now,
+//    reading from DB will not be
+const saveFeeds = (feeds) => {
+  try {
+    fs.writeFileSync(FEEDS_FILE, JSON.stringify(feeds));
+  } catch(err) {
+    console.error(`Error saving feeds file: ${err.message}`);
+  }
+}
+
+const createFeed = (feed) => {
+  let feeds = loadFeeds();
+  const id = feeds[feeds.length - 1].id + 1;
+  let newFeed = {
+    id: id,
+    tags: feed.tags.split(',')
+  }
+  feeds.push(newFeed);
+  saveFeeds(feeds);
+  return id;
+}
+
 module.exports = {
   createMessage,
+  createFeed,
   allFeeds
 }

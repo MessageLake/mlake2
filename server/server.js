@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const { createMessage, allFeeds } = require('./crud.js');
+const { createMessage, createFeed, allFeeds } = require('./crud.js');
 
 app.use(express.static('public'));
 app.use(express.json({ urlencoded: true }));
@@ -22,13 +22,24 @@ app.get('/feeds', (_req, res) => {
 // just store in documents for now
 app.post('/message', (req, res) => {
   try {
-    console.log(req.body);
     const message = req.body;
     const id = createMessage(message);
     console.log(`Saved messages with id: ${id}`);
     res.sendStatus(200);
   } catch(err) {
     console.error(`Error saving message: ${err.message}`)
+    res.sendStatus(500);
+  }
+});
+
+app.post('/feed', (req, res) => {
+  try {
+    const feed = req.body;
+    const id = createFeed(feed);
+    console.log(`Saved feed with id: ${id}`);
+    res.sendStatus(200);
+  } catch(err) {
+    console.error(`Error saving feed: ${err.message}`)
     res.sendStatus(500);
   }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import Feed from './Feed.js';
+import Feed from './Feed';
 
 const Feeds = (props) => (
   <div>

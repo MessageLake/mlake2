@@ -4,7 +4,7 @@ class Messager extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: [],
+      tags: '',
       text: ''
     };
     this.updateTags = this.updateTags.bind(this);
