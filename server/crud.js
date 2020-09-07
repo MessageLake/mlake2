@@ -27,7 +27,7 @@ const createMessage = (message) => {
   const id = messages[messages.length - 1].id + 1;
   let newMessage = {
     id: id,
-    tags: message.tags,
+    tags: message.tags.split(','),
     text: message.text
   }
   messages.push(newMessage);

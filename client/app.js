@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Messager from './Messager';
 import Feeds from './Feeds';
-import feeds from './sampleFeeds.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class App extends React.Component {
     return (
       <div>
         {/* for adding messages to the database */}
-        <Messager />
+        <Messager getFeeds={this.getFeedsForUser} />
         {/* for viewing messages from the database in feeds */}
         <Feeds feeds={feeds} />
       </div>

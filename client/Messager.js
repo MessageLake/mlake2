@@ -30,6 +30,9 @@ class Messager extends React.Component {
       },
       body: JSON.stringify(message)
     })
+      .then(_res => {
+        this.props.getFeeds();
+      })
       .catch(err => {
         console.error(`Error sending message: ${err.message}`);
       });
