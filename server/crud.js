@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const MESSAGES_FILE = path.resolve(__dirname, 'messages.json');
-const FEEDS_FILE = path.resolve(__dirname, 'feeds.json');
+const MESSAGES_FILE = path.resolve(__dirname, 'data/messages.json');
+const FEEDS_FILE = path.resolve(__dirname, 'data/feeds.json');
 
 const loadMessages = () => {
   try {
