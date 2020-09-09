@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const MESSAGES_FILE = path.resolve(__dirname, 'messages.json');
-const FEEDS_FILE = path.resolve(__dirname, 'feeds.json');
+const MESSAGES_FILE = path.resolve(__dirname, 'data/messages.json');
+const FEEDS_FILE = path.resolve(__dirname, 'data/feeds.json');
 
 const loadMessages = () => {
   try {
@@ -39,27 +39,12 @@ const createMessage = (message) => {
 //    reading from DB will not be
 const loadFeeds = () => {
   try {
-    const content = fs.readFileSync(FEEDS_FILE);
-    const data = JSON.parse(content);
-    return data;
+    const data = fs.readFileSync(FEEDS_FILE);
+    const feeds = JSON.parse(data);
+    return feeds;
   } catch(err) {
     console.error(`Error loading feeds file: ${err.message}`);
   }
-}
-
-// Get all feeds for the user (single tenant for now)
-const allFeeds = () => {
-  // iterate through feeds
-  const feeds = loadFeeds();
-  let feedsWithMessages = [];
-  feeds.forEach((feed) => {
-    feedsWithMessages.push({
-      id: feed.id,
-      tags: feed.tags,
-      messages: relevantMessages(feed.tags)
-    });
-  });
-  return feedsWithMessages;
 }
 
 // Collect messages for given tags
@@ -78,7 +63,7 @@ const relevantMessages = (tags) => {
 }
 
 // Keep save methods separate because even though they are identical now,
-//    reading from DB will not be
+//  reading from DB will not be
 const saveFeeds = (feeds) => {
   try {
     fs.writeFileSync(FEEDS_FILE, JSON.stringify(feeds));
@@ -88,19 +73,31 @@ const saveFeeds = (feeds) => {
 }
 
 const createFeed = (feed) => {
-  let feeds = loadFeeds();
+  let feeds = loadFeeds();  
   const id = feeds[feeds.length - 1].id + 1;
-  let newFeed = {
+  feeds.push({
     id: id,
     tags: feed.tags.split(',')
-  }
-  feeds.push(newFeed);
+  });
   saveFeeds(feeds);
   return id;
+}
+
+const updateFeed = (feed) => {
+  let feeds = loadFeeds();
+  for (let i = 0; i < feeds.length; i++) {
+    if (feeds[i].id === feed.id) {
+      feeds[i].tags = feed.tags;
+      saveFeeds(feeds);
+      return relevantMessages(feed.tags);
+    }
+  }
 }
 
 module.exports = {
   createMessage,
   createFeed,
-  allFeeds
+  updateFeed,
+  loadFeeds,
+  relevantMessages
 }

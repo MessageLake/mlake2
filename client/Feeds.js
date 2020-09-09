@@ -8,6 +8,6 @@ const Feeds = (props) => (
       <Feed feed={feed} /> 
     ))}
   </div>
-)
+);
 
 export default Feeds;
