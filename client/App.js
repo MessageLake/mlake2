@@ -21,6 +21,7 @@ class App extends React.Component {
     fetch('/feeds')
       .then(res => res.json())
       .then(json => {
+        console.log(json);
         this.setState({ feeds: json });
       })
       .catch(err => console.error(err));

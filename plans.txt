@@ -32,5 +32,16 @@ Feeds should also be based on fulltext search?
 
 (How is it special?)
 Create feeds
+delete feeds
+edit feeds
+
+maybe add a "mute" feature for messages in a feed that you don't want, even though they have the correct tags.
+  totally user-controlled
+  also messages will be automatically tagged by the person's name
+  EXCLUDE
+    is a feature you need to add
+  ... this becoms "select where not" etc pretty quick.
+  YES but it WORKS!! (and I don't see it being done elsewhere)
+
 
 

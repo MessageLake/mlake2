@@ -88,19 +88,30 @@ const saveFeeds = (feeds) => {
 }
 
 const createFeed = (feed) => {
-  let feeds = loadFeeds();
+  let feeds = loadFeeds();  
   const id = feeds[feeds.length - 1].id + 1;
-  let newFeed = {
+  feeds.push({
     id: id,
     tags: feed.tags.split(',')
-  }
-  feeds.push(newFeed);
+  });
   saveFeeds(feeds);
   return id;
+}
+
+const updateFeed = (feed) => {
+  let feeds = loadFeeds();
+  for (let i = 0; i < feeds.length; i++) {
+    if (feeds[i].id === feed.id) {
+      feeds[i].tags = feed.tags;
+      saveFeeds(feeds);
+      return relevantMessages(feed.tags);
+    }
+  }
 }
 
 module.exports = {
   createMessage,
   createFeed,
+  updateFeed,
   allFeeds
 }

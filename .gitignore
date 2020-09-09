@@ -3,3 +3,7 @@ node_modules/
 
 # Bundle
 public/bundle.js
+
+
+# vscode
+.vscode
