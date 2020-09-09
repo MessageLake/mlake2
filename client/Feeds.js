@@ -5,7 +5,7 @@ const Feeds = (props) => (
   <div style={{backgroundColor: "lightgray"}}>
     <h1>Feeds</h1>
     {props.feeds.map((feed) => (
-      <Feed feed={feed} editFeed={props.editFeed} /> 
+      <Feed feed={feed} /> 
     ))}
   </div>
 );

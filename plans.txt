@@ -18,7 +18,6 @@ a sample response for all feeds for a user (identified only by tags for now)
 
 design query api to add tagged messages
 
-
 you could have the "same" feed with separate tags if the time range is different? Well...
 Time range kind of defeats the purpose. Or does it?
 No it doesn't. Let the tool be flexible. It's search and constant.
@@ -43,5 +42,5 @@ maybe add a "mute" feature for messages in a feed that you don't want, even thou
   ... this becoms "select where not" etc pretty quick.
   YES but it WORKS!! (and I don't see it being done elsewhere)
 
-
+I want to know all available tags
 

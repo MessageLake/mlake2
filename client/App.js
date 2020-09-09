@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Messager from './Messager';
 import Feeder from './Feeder';
 import Feeds from './Feeds';
+import AllTags from './AllTags';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,9 +21,8 @@ class App extends React.Component {
   getFeedsForUser() {
     fetch('/feeds')
       .then(res => res.json())
-      .then(json => {
-        console.log(json);
-        this.setState({ feeds: json });
+      .then(data => {
+        this.setState({ feeds: data });
       })
       .catch(err => console.error(err));
   }
@@ -33,6 +33,9 @@ class App extends React.Component {
       <div>
         {/* for adding messages to the database */}
         <Messager getFeeds={this.getFeedsForUser} />
+        {/* show all tags */}
+        <AllTags feeds={feeds}/>
+        {/* for adding feeds to the database */}
         <Feeder getFeeds={this.getFeedsForUser} />
         {/* for viewing messages from the database in feeds */}
         <Feeds feeds={feeds} />

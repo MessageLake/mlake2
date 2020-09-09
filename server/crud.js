@@ -39,27 +39,12 @@ const createMessage = (message) => {
 //    reading from DB will not be
 const loadFeeds = () => {
   try {
-    const content = fs.readFileSync(FEEDS_FILE);
-    const data = JSON.parse(content);
-    return data;
+    const data = fs.readFileSync(FEEDS_FILE);
+    const feeds = JSON.parse(data);
+    return feeds;
   } catch(err) {
     console.error(`Error loading feeds file: ${err.message}`);
   }
-}
-
-// Get all feeds for the user (single tenant for now)
-const allFeeds = () => {
-  // iterate through feeds
-  const feeds = loadFeeds();
-  let feedsWithMessages = [];
-  feeds.forEach((feed) => {
-    feedsWithMessages.push({
-      id: feed.id,
-      tags: feed.tags,
-      messages: relevantMessages(feed.tags)
-    });
-  });
-  return feedsWithMessages;
 }
 
 // Collect messages for given tags
@@ -78,7 +63,7 @@ const relevantMessages = (tags) => {
 }
 
 // Keep save methods separate because even though they are identical now,
-//    reading from DB will not be
+//  reading from DB will not be
 const saveFeeds = (feeds) => {
   try {
     fs.writeFileSync(FEEDS_FILE, JSON.stringify(feeds));
@@ -113,5 +98,6 @@ module.exports = {
   createMessage,
   createFeed,
   updateFeed,
-  allFeeds
+  loadFeeds,
+  relevantMessages
 }
