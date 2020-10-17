@@ -1,3 +1,9 @@
+// Elasticsearch integration
+//    Basically this whole section of the application can/should be a collection of calls to Elasticsearch
+//    For writing, maybe use a file as a buffer. What can Logstash/Beats listen to? Can it intercept and parse the incoming HTTP requests? Would that be reliable?
+//      Consider durability, reliability, etc.
+ 
+
 const fs = require('fs');
 const path = require('path');
 

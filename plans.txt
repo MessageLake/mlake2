@@ -1,9 +1,15 @@
 cli? html? <- html
 vanilla? react? <- react
   lots of reusable components
+  much more maintainable, vanilla js creates an esoteric labyrinth
 db? <- postgres
   just easy
+  no, elasticsearch
 
+git branch in my terminal
+git hist alias
+readme
+elasticsearch plans
 
 
 in it's first iteration, without a concept of multiple users, this is a way
@@ -39,7 +45,7 @@ maybe add a "mute" feature for messages in a feed that you don't want, even thou
   also messages will be automatically tagged by the person's name
   EXCLUDE
     is a feature you need to add
-  ... this becoms "select where not" etc pretty quick.
+  ... this becomes "select where not" etc pretty quick.
   YES but it WORKS!! (and I don't see it being done elsewhere)
 
 I want to know all available tags
