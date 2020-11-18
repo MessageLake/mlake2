@@ -33,13 +33,13 @@ html {
 .water {
   height: 100%;
   width: 80%;
-  background-color: rgb(4, 54, 219);;
+  background-color: rgb(23, 82, 209);;
 }
 
 .grass {
   height: 100%;
   width: 20%;
-  background-color: green;
+  background-color: rgb(55, 156, 55);
 }
 
 .row {
