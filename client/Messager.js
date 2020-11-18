@@ -40,7 +40,7 @@ class Messager extends React.Component {
 
   render() {
     return (
-      <div className="lightgreen component">
+      <div className="lightpurple component">
         <h1>Messager</h1>
         <h3>Send a message</h3>
         {/* send messages from here */}

@@ -1,33 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+.titleBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.appTitleText {
+  font-size: 5em;
+  margin: 0px 20px 0px 0px;
+}
+
+.mlakeLogo {
+  flex-grow: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sky {
+  height: 50%;
+  background-color: rgb(190, 237, 255);
+}
+
+.earth {
+  display: flex;
+  height: 50%;
+}
+
+.water {
+  height: 100%;
+  width: 80%;
+  background-color: rgb(4, 54, 219);;
+}
+
+.grass {
+  height: 100%;
+  width: 20%;
+  background-color: green;
+}
+
 .row {
   display: flex;
   flex-direction: row;
 }
 
 .component {
+  margin: 10px 0px;
   box-shadow: 0px 0px 4px 0px gray;
-  border-radius: 6px;
-  margin: 1px;
+  border-radius: 4px;
+  padding: 5px 10px 15px 10px;
 }
 
 .subComponent {
+  margin: 0px 2px 0px 2px;
   box-shadow: 0px 0px 4px 0px gray;
   border-radius: 6px;
-  margin: 3px;
+  padding: 5px 10px 15px 10px;
+}
+
+.feedHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feedId {
+  font-style: italic;
+}
+
+.message {
+  border-top: 2px solid white;
+}
+
+.messageFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+h1, h2, h3, h4 {
+  margin: 5px 0px 2px 0px;
 }
 
 .lightgray {
   background-color: lightgray;
 }
 
-.lightpink {
-  background-color: lightpink;
+.lightpurple {
+  background-color: rgba(255, 206, 244, 0.8);
 }
 
 .lightgreen {
-  background-color: lightgreen;
+  background-color: rgba(234, 255, 201, 0.8);
 }
 
 .lemonchiffon {
-  background-color: lemonchiffon;
+  background-color: rgba(255, 241, 206, 0.8);
+}
+
+.feedscolor {
+  background-color: rgba(227, 238, 255, 0.8);
 }
 

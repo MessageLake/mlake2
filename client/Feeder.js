@@ -30,7 +30,7 @@ class Feeder extends React.Component {
   
   render() {
     return (
-      <div className="lightpink component">
+      <div className="lightgreen component">
         <h1>Create Feed</h1>
         <label htmlFor="tags">Tags (comma-separated)</label><br/>
         <input type="text" name="tags" onChange={this.updateTags} /><br/>

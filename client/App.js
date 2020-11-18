@@ -4,6 +4,7 @@ import Messager from './Messager';
 import Feeder from './Feeder';
 import Feeds from './Feeds';
 import AllTags from './AllTags';
+import TitleBar from './Titlebar';
 import './styles.css';
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
     const { feeds } = this.state;
     return (
       <div>
+        <TitleBar/>
         {/* for adding messages to the database */}
         <Messager getFeeds={this.getFeedsForUser} />
         {/* show all tags */}
