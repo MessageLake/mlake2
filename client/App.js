@@ -4,6 +4,7 @@ import Messager from './Messager';
 import Feeder from './Feeder';
 import Feeds from './Feeds';
 import AllTags from './AllTags';
+import './styles.css';
 
 class App extends React.Component {
   constructor(props) {

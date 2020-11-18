@@ -7,7 +7,7 @@ import React from 'react';
 const AllTags = (props) => {
   const tags = props.feeds.map(feed => feed.tags).flat();
   return (
-    <div style={{backgroundColor: 'lemonchiffon'}}>
+    <div className="lemonchiffon component">
       <h3>All Tags</h3>
       {tags.map((tag) => (
         <span>{tag} </span>

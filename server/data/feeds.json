@@ -1,1 +1,47 @@
-[{"id":1,"tags":["equipment","microphone","hardware"]},{"id":2,"tags":["client","singer","band"]},{"id":3,"tags":["surprise","birthday","band","singer"]},{"id":4,"tags":["friends","band"]},{"id":5,"tags":["office","logistics","events"]},{"id":6,"tags":["snacks","cats"]}]
+[
+    {
+        "id": 1,
+        "name": "studio",
+        "tags": [
+            "equipment",
+            "microphone",
+            "hardware"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "clients",
+        "tags": [
+            "client",
+            "singer",
+            "band"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "events",
+        "tags": [
+            "surprise",
+            "birthday",
+            "band",
+            "singer"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "logistics",
+        "tags": [
+            "office",
+            "logistics",
+            "events"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "fun",
+        "tags": [
+            "snacks",
+            "cats"
+        ]
+    }
+]

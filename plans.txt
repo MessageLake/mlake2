@@ -1,3 +1,30 @@
+#############
+### Tasks ###
+
+Features:
+  Allow time range modification for feeds
+  exclude some tags (tag query) Lucene?
+
+To do:
+  Use Elasticsearch backend
+  Fulltext search option for feed "tag"
+
+Done:
+  Feeds based on tags √
+  create sample data that displays feeds as they would be populated √
+  design query api to add tagged messages √
+  display sections of feed √
+  display messages √
+  see all available tags √
+
+
+####################
+####   Design    ###
+
+to avoid ambiguity with root-level field names, prepend all lake fields with "lake_"
+  {"lake_author":"dan","lake_tags":["sales"],"lake_text":"We got a new customer."}
+
+
 cli? html? <- html
 vanilla? react? <- react
   lots of reusable components
@@ -5,42 +32,13 @@ db? <- postgres
   just easy
 
 
+####################
+###  Discussion  ###
 
-in it's first iteration, without a concept of multiple users, this is a way
-for an individual to store notes and retrieve them later according to content
-and have multiple sets of histories according to content
-
-fictional recording studio
-
-create sample data that displays feeds as they would be populated
-a sample response for all feeds for a user (identified only by tags for now)
-  a sample response for 1 feed ()
-
-design query api to add tagged messages
-
-you could have the "same" feed with separate tags if the time range is different? Well...
-Time range kind of defeats the purpose. Or does it?
-No it doesn't. Let the tool be flexible. It's search and constant.
-It's almost like elasticsearch for notes? "Human-generated logs"?
-
-display sections of feed
-display messages
-
-Feeds based on tags
-Feeds should also be based on fulltext search?
+without multiple users, this is Note Lake
 
 (How is it special?)
 Create feeds
 delete feeds
 edit feeds
-
-maybe add a "mute" feature for messages in a feed that you don't want, even though they have the correct tags.
-  totally user-controlled
-  also messages will be automatically tagged by the person's name
-  EXCLUDE
-    is a feature you need to add
-  ... this becoms "select where not" etc pretty quick.
-  YES but it WORKS!! (and I don't see it being done elsewhere)
-
-I want to know all available tags
 

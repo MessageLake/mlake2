@@ -27,10 +27,10 @@ class Feeder extends React.Component {
       })
       .catch((err) => console.error(`Error posting feed: ${err}`));
   }
-
+  
   render() {
     return (
-      <div style={{backgroundColor: "lightpink"}}>
+      <div className="lightpink component">
         <h1>Create Feed</h1>
         <label htmlFor="tags">Tags (comma-separated)</label><br/>
         <input type="text" name="tags" onChange={this.updateTags} /><br/>

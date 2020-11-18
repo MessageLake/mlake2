@@ -8,6 +8,7 @@ class Feed extends React.Component {
     this.state = {
       editing: false,
       id: props.feed.id,
+      name: props.feed.name,
       tags: props.feed.tags,
       messages: []
     };
@@ -74,17 +75,17 @@ class Feed extends React.Component {
   }
 
   render() {
-    const { editing, id, tags, messages } = this.state;
+    const { editing, id, name, tags, messages } = this.state;
     return (
-      <div>
-        <h2 style={{backgroundColor: "orange"}}>Feed {id}</h2>
+      <div className="subComponent">
+        <h2 className="orange">{id}: {name}</h2>
         <h3>Tags</h3>
         {
           editing
           ? <EditFeed tags={tags} saveEdit={this.saveEdit} updateTags={this.updateTags} />
           : <div>
               {tags.map((tag) => (
-                <span key={tag}>{tag} </span>
+                <span>{tag} </span>
               ))}
               <button onClick={this.editFeed}>Edit</button>
             </div>

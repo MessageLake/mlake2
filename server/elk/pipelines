@@ -1,0 +1,18 @@
+1) JSON parsing pipeline for use by Filebeat input
+  - Unnecessary because Filebeat has built-in processors to use
+
+  curl -X PUT "localhost:9200/_ingest/pipeline/my-pipeline-id?pretty" -H 'Content-Type: application/json' -d'
+  {
+    "description" : "for parsing json from input buffer file",
+    "processors" : [
+      {
+        "json" : {
+          "field": "foo",
+          "value": "bar"
+        }
+      }
+    ]
+  }
+  '
+
+

@@ -2,11 +2,13 @@ import React from 'react';
 import Feed from './Feed';
 
 const Feeds = (props) => (
-  <div style={{backgroundColor: "lightgray"}}>
+  <div className="lightgray component">
     <h1>Feeds</h1>
-    {props.feeds.map((feed) => (
-      <Feed feed={feed} /> 
-    ))}
+    <div className="row">
+      {props.feeds.map((feed) => (
+        <Feed key={feed.id} feed={feed} /> 
+      ))}
+    </div>
   </div>
 );
 
