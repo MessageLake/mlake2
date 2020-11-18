@@ -9,6 +9,16 @@ To do:
   Use Elasticsearch backend
   Fulltext search option for feed "tag"
 
+This is not a messaging program until it can support multiple users
+
+cli? html? <- html
+vanilla? react? <- react
+  lots of reusable components
+  much more maintainable, vanilla js creates an esoteric labyrinth
+db? <- postgres
+  just easy
+  no, elasticsearch
+
 Done:
   Feeds based on tags √
   create sample data that displays feeds as they would be populated √
