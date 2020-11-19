@@ -10,7 +10,8 @@
 /var/lib/elasticsearch
 /var/log/elasticsearch
 ```
-
+### Start/Stop
+`systemctl [start|stop] elasticsearch`
 ## Filebeat
 ### Locations
 ```
@@ -21,4 +22,9 @@
 /var/lib/filebeat
 /var/log/filebeat
 ```
+### Modules
+`/etc/filebeat/modules.d/`
+`filebeats modules enable elasticsearch`
+### Start/Stop
+`systemctl [start|stop] filebeat`
 ### Pipelines
