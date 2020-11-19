@@ -1,0 +1,29 @@
+#############
+### Tasks ###
+
+Features:
+  Allow time range modification for feeds
+  exclude some tags (tag query) Lucene?
+
+To do:
+  Elasticsearch backend
+
+This is not a messaging program until it can support multiple users
+
+
+####################
+####   Design    ###
+
+to avoid ambiguity with root-level field names, prepend all lake fields with "lake_"
+  {"lake_author":"dan","lake_tags":["sales"],"lake_text":"We got a new customer."}
+
+####################
+###  Discussion  ###
+
+without multiple users, this is Note Lake
+
+(How is it special?)
+Create feeds
+delete feeds
+edit feeds
+
