@@ -2,6 +2,9 @@
 ## Docs
 [Elasticsearch][1e]  
 [Filebeat][2f]
+[Logstash][3l]
+## Architecture
+MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by)--> Logstash --(saved to)--> Elasticsearch
 ## Elasticsearch
 ### Locations
 ```
@@ -15,6 +18,22 @@
 ```
 ### Start/Stop
 `systemctl [start|stop] elasticsearch`
+
+## Logstash
+### Locations
+```
+/etc/logstash
+  /logstash.yml
+  /pipelines.yml
+/usr/share/logstash
+  /bin
+/var/lib/logstash
+/var/log/logstash
+```
+### Start/Stop
+`systemctl [start|stop] elasticsearch`
+### Pipelines
+
 ## Filebeat
 ### Locations
 ```
@@ -30,7 +49,7 @@
 `filebeats modules enable elasticsearch`
 ### Start/Stop
 `systemctl [start|stop] filebeat`
-### Pipelines
+
 
 
 [1e]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
