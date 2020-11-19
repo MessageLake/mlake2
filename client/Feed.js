@@ -78,7 +78,7 @@ class Feed extends React.Component {
     const { editing, id, name, tags, messages } = this.state;
     return (
       <div className="subComponent">
-        <h2 className="orange feedHeader"><span>{name}</span><span class="feedId">{id}</span></h2>
+        <h2 className="orange feedHeader"><span>{name}</span><span className="feedId">{id}</span></h2>
         <h3>Tags</h3>
         {
           editing

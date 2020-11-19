@@ -1,12 +1,30 @@
-const fs = require('fs');
+// CRUD messages and feeds
 const path = require('path');
+const fs = require('fs').promises;
 
-const MESSAGES_FILE = path.resolve(__dirname, 'data/messages.json');
+// File paths
+const MESSAGES_FILE = path.resolve(__dirname, 'data/input_buffer');
+const SAMPLE_MESSAGES = path.resolve(__dirname, 'data/messages.json');
 const FEEDS_FILE = path.resolve(__dirname, 'data/feeds.json');
 
-const loadMessages = () => {
+const formatMessage = (input) => {
+  return `${JSON.stringify(input)}\n`;
+}
+
+async function saveMessage(input) {
+  const message = formatMessage(input);
+  console.log(`Saving ${message}`)
   try {
-    const content = fs.readFileSync(MESSAGES_FILE);
+    await fs.appendFile(MESSAGES_FILE, message);
+    return true;
+  } catch(err) {
+    return false;
+  }
+}
+
+async function loadMessages() {
+  try {
+    const content = await fs.readFile(SAMPLE_MESSAGES);
     const data = JSON.parse(content); 
     return data;
   } catch(err) {
@@ -14,32 +32,20 @@ const loadMessages = () => {
   }
 }
 
-const saveMessages = (messages) => {
+// Keep save methods separate because even though they are identical now,
+//  reading from DB will not be
+async function saveFeeds (feeds) {
   try {
-    fs.writeFileSync(MESSAGES_FILE, JSON.stringify(messages));
+    await fs.writeFile(FEEDS_FILE, JSON.stringify(feeds));
   } catch(err) {
-    console.error(`Error saving messages file: ${err.message}`);
+    console.error(`Error saving feeds file: ${err.message}`);
   }
-}
-
-const createMessage = (message) => {
-  let messages = loadMessages();
-  const id = messages[messages.length - 1].id + 1;
-  let newMessage = {
-    id: id,
-    tags: message.tags.split(','),
-    text: message.text
-  }
-  messages.push(newMessage);
-  saveMessages(messages);
-  return id;
 }
 
 // Keep load methods separate because even though they are identical now,
-//    reading from DB will not be
-const loadFeeds = () => {
+async function loadFeeds() {
   try {
-    const data = fs.readFileSync(FEEDS_FILE);
+    const data = await fs.readFile(FEEDS_FILE);
     const feeds = JSON.parse(data);
     return feeds;
   } catch(err) {
@@ -48,9 +54,9 @@ const loadFeeds = () => {
 }
 
 // Collect messages for given tags
-const relevantMessages = (tags) => {
+async function relevantMessages(tags) {
   // get relevant messages
-  const messages = loadMessages();
+  const messages = await loadMessages();
   return messages.filter((message) => {
     // get messages that include given tags
     for (let i = 0; i < tags.length; i++) {
@@ -62,40 +68,30 @@ const relevantMessages = (tags) => {
   });
 }
 
-// Keep save methods separate because even though they are identical now,
-//  reading from DB will not be
-const saveFeeds = (feeds) => {
-  try {
-    fs.writeFileSync(FEEDS_FILE, JSON.stringify(feeds));
-  } catch(err) {
-    console.error(`Error saving feeds file: ${err.message}`);
-  }
-}
-
-const createFeed = (feed) => {
-  let feeds = loadFeeds();  
+async function createFeed(feed) {
+  let feeds = await loadFeeds();  
   const id = feeds[feeds.length - 1].id + 1;
   feeds.push({
     id: id,
     tags: feed.tags.split(',')
   });
-  saveFeeds(feeds);
+  await saveFeeds(feeds);
   return id;
 }
 
-const updateFeed = (feed) => {
-  let feeds = loadFeeds();
+async function updateFeed(feed) {
+  let feeds = await loadFeeds();
   for (let i = 0; i < feeds.length; i++) {
     if (feeds[i].id === feed.id) {
       feeds[i].tags = feed.tags;
-      saveFeeds(feeds);
-      return relevantMessages(feed.tags);
+      await saveFeeds(feeds);
+      return await relevantMessages(feed.tags);
     }
   }
 }
 
 module.exports = {
-  createMessage,
+  saveMessage,
   createFeed,
   updateFeed,
   loadFeeds,
