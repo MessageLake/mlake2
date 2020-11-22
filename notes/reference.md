@@ -1,8 +1,8 @@
 # ELK
 ## Docs
 [Elasticsearch][1e]  
-[Filebeat][2f]
-[Logstash][3l]
+[Logstash][3l]  
+[Filebeat][2f]  
 ## Architecture
 MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by)--> Logstash --(saved to)--> Elasticsearch
 ## Elasticsearch
@@ -33,6 +33,8 @@ MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by
 ### Start/Stop
 `systemctl [start|stop] elasticsearch`
 ### Pipelines
+`server/elk/lake-pipeline.conf`  
+[Dissect Filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html)
 
 ## Filebeat
 ### Locations
@@ -54,3 +56,4 @@ MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by
 
 [1e]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
 [2f]: https://www.elastic.co/guide/en/beats/filebeat/current/index.html
+[3l]: https://www.elastic.co/guide/en/logstash/current/index.html
