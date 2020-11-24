@@ -17,7 +17,15 @@ MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by
 /var/log/elasticsearch
 ```
 ### Start/Stop
-`systemctl [start|stop] elasticsearch`
+`systemctl [start|stop] elasticsearch`  
+`sudo /usr/share/elasticsearch/bin/elasticsearch`
+### Clusters, nodes, and shards
+Elasticsearch is ["distributed by nature."][dbn] Always exists as a cluster, even if it has one node.  
+### API
+**Host:** Localhost  
+**Port:** 9200  
+
+
 
 ## Logstash
 ### Locations
@@ -31,10 +39,11 @@ MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by
 /var/log/logstash
 ```
 ### Start/Stop
-`systemctl [start|stop] elasticsearch`
+`systemctl [start|stop] logstash`  
+`sudo /usr/share/logstash/bin/logstash -f {proj_home}/server/elk/lake-pipeline.conf [--config.reload.automatic]`
 ### Pipelines
 `server/elk/lake-pipeline.conf`  
-[Dissect Filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html)
+[Dissect Filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html)  
 
 ## Filebeat
 ### Locations
@@ -47,13 +56,15 @@ MessageLake --(write to)--> Buffer File --(ingested by)--> Filebeat --(parsed by
 /var/log/filebeat
 ```
 ### Modules
-`/etc/filebeat/modules.d/`
+`/etc/filebeat/modules.d/`  
 `filebeats modules enable elasticsearch`
 ### Start/Stop
-`systemctl [start|stop] filebeat`
+`systemctl [start|stop] filebeat`  
+`sudo /usr/share/filebeat/bin/filebeat -e -c /etc/filebeat/filebeat.yml -d "publish"`
 
 
 
 [1e]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
 [2f]: https://www.elastic.co/guide/en/beats/filebeat/current/index.html
 [3l]: https://www.elastic.co/guide/en/logstash/current/index.html
+[dbn]: https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
