@@ -1,0 +1,94 @@
+Current:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-search.html
+
+
+Can I build my messaging app idea on ELK?
+  logstash ingests files dumbly appended-to by messagers
+  dissect or grok to parse files and create queryable data
+  why bother making a database?
+    Is Elasticsearch basically the database?
+      docs do say "storing it in Elasticsearch"
+      Lucene's implementation of inverted index is highly optimized
+      elasticsearch has "shards" and indexes
+        each shard is a lucene index
+
+logstash
+example
+log file -> filebeat -> logstash -> elasticsearch ( -> kibana )
+                        - filters (grok and geoip)
+goes into elasticsearch index or cluster
+logstash is ingest tool
+  "data collection engine"
+
+seems like es and logstash are meant to exist one-per-computer
+what if I'm running multiple elk-based programs on one computer?
+  my practice projects and my real project
+  filebeat registry -- there is only one
+  but there are many es clusters/indexes
+  multiple logstash pipelines
+  i can also easily delete the registry after each startup
+    /var/lib/filebeat/registry
+
+i need an appender to my messages file... what would be sclable?
+  multiple files? a directory?
+  isn't the point just that es is the persister?
+  this file is really more like a buffer... saving it in raw format--important?
+  maybe a backup can be copied over somewhere
+  
+  Appender appends to messages file
+    When messages file is 1000 lines long, it is copied to a document store and erased
+  Filebeat constantly reads from messages file
+
+
+elasticsearch
+document store
+data structures not tables
+cluster of nodes
+inverted index = fast search
+dedicated data structure per field type
+BKD tree -> geo
+distributed by default
+sudo systemctl start elasticsearch.service
+tail /var/log/elasticsearch/elasticsearch.log
+kibana
+packetbeat
+community beats
+
+curl localhost:9200/_nodes | jq
+
+
+
+Questions
+is logstash optional? yes
+How do I control elasticsearch index creation and naming?
+  See: Bootstrapping a cluster
+Where is config? /etc/elasticsearch/elasticsearch.yml
+Is starting the elasticsearch systemd service the same as starting the cluster?
+
+
+
+elasticsearch
+configuration files
+  elasticsearch.yml
+  jvm.options
+  log4j2.properties
+  all in /etc/elasticsearch
+
+
+
+****New
+
+lake-pipeline.yml
+  goes in /etc/logstash/conf.d/ ?
+  or specified on cmd line at startup?
+  bin/logstash -f lake-pipeline.conf
+
+
+elasticsearch, logstash, and kibana create their own users and groups
+their files belong to root by default
+elasticsearch cannot be run as root by default
+  but it can be run as a service
+
+How to create new elasticsearch indices?
+
+
